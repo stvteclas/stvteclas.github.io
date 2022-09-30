@@ -168,6 +168,35 @@
     font-style: italic;
     color: var(--main-red);
   }
+  /* certificates section */
+  
+  .certificates-section {
+    text-align: center;
+    padding: 10rem 2rem;
+    background: var(--main-blue);
+  }
+
+  .certificates-section-header {
+    max-width: 640px;
+    margin: 0 auto 6rem auto;
+    border-bottom: 0.2rem solid var(--main-white);
+  }
+
+  @media (max-width: 28.75em) {
+    .certificates-section-header {
+      font-size: 4rem;
+    }
+  }
+
+  .certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-gap: 4rem;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+  }
   /* Projects section */
   
   .projects-section {
