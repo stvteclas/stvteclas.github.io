@@ -1,45 +1,35 @@
 # Pablo Murgia — Portafolio
 
-Portafolio profesional de **Pablo Murgia**, Backend Developer especializado en Java, Spring Boot y migración de sistemas de salud digital.
+Portafolio de **Pablo Murgia**, Java Backend Developer semi-senior y Líder Técnico.
 
-**Sitio live:** [stvteclas.github.io](https://stvteclas.github.io)
+**Sitio live:** [stvteclas.github.io](https://stvteclas.github.io)  
+**Ubicación:** Villa Allende, Córdoba, Argentina
 
-## Experiencia destacada
+## Perfil
 
-Migraciones en el ecosistema **SIGEHOS** (DGSISAN, GCBA):
+Desarrollador Java Backend con más de 3 años de experiencia en sectores **salud** y **financiero**. Líder técnico en DGSISAN (migraciones legacy → Spring Boot). Consultor en Blink/Visual-Limes y ex-BAUFEST/BBVA.
 
-- **Laboratorio** — Estrategia híbrida: Angular 17 + Spring Boot 3 + Java 21
-- **Gestor de Encuentros** — GobTur Platform (Etapa 1: monolito → 7 MS, ~32%) + Etapa 2: 9 MS standalone
-- **Bus de Interoperabilidad** — Integración HL7 FHIR
+## Experiencia
+
+| Empresa | Rol | Período |
+|---|---|---|
+| Blink / Visual-Limes | Backend Developer Java (FARHOS) | Sep 2025 — Actualidad |
+| DGSISAN | Líder Técnico / Java Backend | Ene 2023 — Actualidad |
+| BAUFEST / BBVA | Backend Developer Java | Jul 2023 — Ago 2025 |
+
+## Migraciones destacadas (DGSISAN)
+
+- **Gestor de Encuentros** — GobTur Platform (GlassFish → Spring Boot 3.5.6 + Angular 15)
+- **Sistema de Laboratorio** — Spring Boot + Angular 15, −80% logins HTTP
+- **Bus de Interoperabilidad** — HL7, Quartz, JWT, Docker
+- **Scheduler de Turnos** — 9 jobs Quartz, Java 8 → 21
 
 ## Stack
 
-- **Backend:** Java 21, Spring Boot 3, Hibernate/JPA, REST APIs
-- **Frontend:** Angular 17, React, Thymeleaf
-- **Integración:** Sigehos Auth, JWT, HL7 FHIR, ESB
-- **Datos:** PostgreSQL, MySQL
-- **Herramientas:** Git, Docker, Scrum
-
-## Estructura del repositorio
-
-```
-docs/
-├── index.html              # Portafolio principal
-├── certificates.html       # Formación y certificados
-├── css/styles.css          # Estilos
-├── casos/
-│   ├── laboratorio.html    # Caso: migración híbrida LIS
-│   ├── gestor-encuentro.html
-│   └── bus-interoperabilidad.html
-└── certificates/           # Imágenes de certificados
-```
-
-## Documentación de migraciones
-
-Para incorporar documentación técnica local, copiar archivos a `docs/casos/<proyecto>/`. Ver `docs/casos/README.md`.
+Java 8/11/21 · Spring Boot 3 · Angular 15 · Oracle · HL7 · JWT · Docker · Flyway · Quartz
 
 ## Contacto
 
-- GitHub: [@stvteclas](https://github.com/stvteclas)
-- LinkedIn: [stvteclas](https://www.linkedin.com/in/stvteclas)
 - Email: pablo.murgia23@gmail.com
+- LinkedIn: [pabloMurgia](https://www.linkedin.com/in/pabloMurgia)
+- GitHub: [@stvteclas](https://github.com/stvteclas)
