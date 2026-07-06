@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Migración híbrida del módulo de Laboratorio: Angular 17, Spring Boot 3, Java 21 y transición gradual desde Glassfish."
+    />
+    <title>Migración Laboratorio — Estrategia Híbrida | Pablo Murgia</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="../index.html" class="nav-brand">PM</a>
+      <ul class="nav-list">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../index.html#migrations-section">Migraciones</a></li>
+        <li><a href="../index.html#contact">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <main class="case-study">
+      <header class="case-header">
+        <a href="../index.html#migrations-section" class="case-back"
+          ><i class="fas fa-arrow-left"></i> Volver a migraciones</a
+        >
+        <span class="migration-type">Migración híbrida · SIGEHOS / DGSISAN</span>
+        <h1>Estrategia de Migración Híbrida — Efector Web Angular</h1>
+        <p class="case-lead">
+          Migración gradual del módulo de Laboratorio que mantiene la funcionalidad
+          existente mientras moderniza la arquitectura paso a paso: frontend en
+          <strong>Angular 17</strong>, backend moderno en
+          <strong>Spring Boot 3 + Java 21</strong> y coexistencia temporal con el
+          legacy en <strong>Glassfish (labController)</strong>.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">Angular 17</span>
+          <span class="badge">Spring Boot 3</span>
+          <span class="badge">Java 21</span>
+          <span class="badge">Sigehos Auth</span>
+          <span class="badge">JWT</span>
+        </div>
+      </header>
+
+      <div class="container case-content">
+        <section class="case-block">
+          <h2><i class="fas fa-bullseye"></i> Visión general</h2>
+          <p>
+            La estrategia implementa una <strong>migración gradual sin interrupciones</strong>:
+            los usuarios siguen operando con normalidad mientras el equipo migra endpoints
+            del backend legacy hacia <code>laboratorio-service</code>, con autenticación
+            centralizada vía Sigehos y tokens JWT modernos.
+          </p>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-sitemap"></i> Arquitectura híbrida actual</h2>
+          <div class="architecture-diagram arch-three-col">
+            <div class="arch-box">
+              <h3>efector-web-angular</h3>
+              <span class="arch-tech">Angular 17</span>
+              <ul>
+                <li>Auth: Sigehos</li>
+                <li>JWT: laboratorio-service</li>
+                <li>APIs: labController (temporal)</li>
+                <li>Interceptor HTTP híbrido</li>
+              </ul>
+            </div>
+            <div class="arch-connector"><i class="fas fa-arrows-alt-h"></i></div>
+            <div class="arch-box arch-highlight">
+              <h3>laboratorio-service</h3>
+              <span class="arch-tech">Spring Boot 3 · Java 21</span>
+              <ul>
+                <li>Auth: Sigehos</li>
+                <li>Generación de JWT</li>
+                <li>Preparado para migración</li>
+                <li>Spring Security</li>
+              </ul>
+            </div>
+            <div class="arch-connector"><i class="fas fa-arrows-alt-h"></i></div>
+            <div class="arch-box arch-legacy">
+              <h3>labController</h3>
+              <span class="arch-tech">Glassfish (Legacy)</span>
+              <ul>
+                <li>Business Logic actual</li>
+                <li>Endpoints legacy</li>
+                <li>Coexistencia temporal</li>
+                <li>Migración gradual</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-exchange-alt"></i> Flujos principales</h2>
+          <div class="flow-grid">
+            <div class="flow-card">
+              <h3>1. Autenticación moderna</h3>
+              <code class="flow-code"
+                >Usuario → AuthGuard → laboratorio-service → Sigehos → Token → JWT</code
+              >
+              <ol>
+                <li>Redirección a Sigehos para login</li>
+                <li>Validación del token de Sigehos</li>
+                <li>Generación de JWT interno por laboratorio-service</li>
+                <li>Interceptor añade headers automáticamente</li>
+              </ol>
+            </div>
+            <div class="flow-card">
+              <h3>2. Operaciones de negocio (fase actual)</h3>
+              <code class="flow-code"
+                >efector-web-angular → labController → Base de Datos</code
+              >
+              <p>
+                Las operaciones de negocio siguen pasando por el backend legacy mientras
+                se migran endpoint por endpoint hacia el servicio moderno.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-tasks"></i> Plan de migración por fases</h2>
+          <div class="phases-timeline">
+            <div class="phase phase-done">
+              <span class="phase-status"><i class="fas fa-check-circle"></i> Completada</span>
+              <h3>Fase 1 — Autenticación moderna</h3>
+              <ul>
+                <li>Flujo Sigehos + laboratorio-service</li>
+                <li>JWT moderno para autenticación</li>
+                <li>Interceptor HTTP híbrido en Angular</li>
+                <li>Compatibilidad mantenida con labController</li>
+              </ul>
+            </div>
+            <div class="phase phase-active">
+              <span class="phase-status"><i class="fas fa-spinner"></i> En progreso</span>
+              <h3>Fase 2 — Migración gradual de endpoints</h3>
+              <ul>
+                <li>Endpoints de autenticación</li>
+                <li>Endpoints de usuarios</li>
+                <li>Endpoints de efectores</li>
+                <li>Endpoints de agendas</li>
+                <li>Endpoints de turnos</li>
+              </ul>
+            </div>
+            <div class="phase">
+              <span class="phase-status"><i class="fas fa-flag-checkered"></i> Planificada</span>
+              <h3>Fase 3 — Finalización</h3>
+              <ul>
+                <li>Deprecar labController (Glassfish)</li>
+                <li>Consolidar en laboratorio-service</li>
+                <li>Optimizar arquitectura final</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-code"></i> Implementación técnica</h2>
+          <div class="case-two-col">
+            <div>
+              <h3>Frontend — efector-web-angular</h3>
+              <div class="skill-tags">
+                <span>Angular 17</span>
+                <span>AuthGuard</span>
+                <span>HTTP Interceptor</span>
+                <span>JWT</span>
+              </div>
+              <pre class="code-block"><code>export const environment = {
+  // Legacy (temporal)
+  apiUrl: '.../LabController/api',
+  // Moderno
+  laboratorioServiceUrl: '.../api',
+};</code></pre>
+            </div>
+            <div>
+              <h3>Backend — laboratorio-service</h3>
+              <div class="skill-tags">
+                <span>Spring Boot 3</span>
+                <span>Java 21</span>
+                <span>Spring Security</span>
+                <span>Sigehos</span>
+              </div>
+              <pre class="code-block"><code>POST /api/auth/sigehos-login
+POST /api/auth/validate-sigehos
+GET  /api/auth/me
+POST /api/auth/refresh
+
+// Futuros (migración gradual)
+GET  /api/centros/usuario
+GET  /api/agendas
+POST /api/turnos</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-chart-line"></i> Beneficios de la estrategia</h2>
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <i class="fas fa-shield-alt"></i>
+              <h3>Sin interrupciones</h3>
+              <p>Funcionalidad existente se mantiene. Los usuarios no notan cambios durante la migración.</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-rocket"></i>
+              <h3>Modernización gradual</h3>
+              <p>Spring Boot 3, Java 21 y arquitectura escalable con mejores prácticas de seguridad.</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-undo"></i>
+              <h3>Flexibilidad</h3>
+              <p>Rollback sencillo, testing incremental y ajustes en tiempo real durante el proceso.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-vial"></i> Testing y monitoreo</h2>
+          <p>Flujo de validación del ciclo de autenticación:</p>
+          <ol class="testing-steps">
+            <li>Acceder a la aplicación Angular</li>
+            <li>Verificar redirección a Sigehos</li>
+            <li>Autenticarse en Sigehos</li>
+            <li>Verificar retorno con token</li>
+            <li>Validar JWT en laboratorio-service</li>
+            <li>Confirmar acceso a la aplicación</li>
+          </ol>
+        </section>
+
+        <section class="case-block case-cta">
+          <h2>Documentación del proyecto</h2>
+          <p>Documentación técnica complementaria del módulo:</p>
+          <ul class="doc-list">
+            <li><i class="fas fa-file-alt"></i> BACKEND_INTEGRATION.md — Integración con backend</li>
+            <li><i class="fas fa-file-alt"></i> COMPONENTS_DOCUMENTATION.md — Componentes Angular</li>
+            <li><i class="fas fa-file-alt"></i> FLOW_DOCUMENTATION.md — Flujos de la aplicación</li>
+          </ul>
+          <p class="case-note">
+            <i class="fas fa-lock"></i>
+            Proyecto institucional — código y documentación interna no públicos.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:stvpablo@gmail.com" class="btn btn-primary"
+              ><i class="fas fa-envelope"></i> Contactar</a
+            >
+            <a
+              href="https://www.linkedin.com/in/stvteclas"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Pablo Murgia</p>
+      <p><a href="../index.html">Volver al portafolio</a></p>
+    </footer>
+  </body>
+</html>

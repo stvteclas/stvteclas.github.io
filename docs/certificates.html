@@ -1,121 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link
-          rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-          crossorigin="anonymous"
-  />
-  <link
-          href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap"
-          rel="stylesheet"
-  />
-  <link
-          href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap"
-          rel="stylesheet"
-  />
-</head>
-<body>
-<!-- START NAV -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Certificados y formación de Pablo Murgia — Backend Developer." />
+    <title>Formación | Pablo Murgia</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="index.html" class="nav-brand">PM</a>
+      <ul class="nav-list">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#migrations-section">Migraciones</a></li>
+        <li><a href="#certificates-section">Certificados</a></li>
+        <li><a href="#language-section">Idiomas</a></li>
+        <li><a href="index.html#contact">Contacto</a></li>
+      </ul>
+    </nav>
 
-<nav id="navbar" class="nav">
-  <ul class="nav-list">
-    <li>
-      <a href=index.html>Start</a>
-    </li>
-    <li>
-      <a href="#certificates-section">Certificates</a>
-    </li>
-    <li>
-      <a href="#languaje-certificate-section">Language Certificate</a>
-    </li>
-    <li>
-      <a href="#contact">Contact</a>
-    </li>
-  </ul>
-</nav>
+    <section id="certificates-section" class="certificates-section">
+      <h2 class="certificates-section-header">Certificados técnicos</h2>
+      <div class="certificates-grid">
+        <img src="certificates/certificado%20web%20design.png" alt="Web Design" loading="lazy" />
+        <img src="certificates/javascript%20algorithms.png" alt="JavaScript Algorithms" loading="lazy" />
+        <img src="certificates/certificado%20java%20essential.png" alt="Java Essential" loading="lazy" />
+        <img src="certificates/certificadoterminal%20.png" alt="Terminal" loading="lazy" />
+        <img src="certificates/springamigoscode.png" alt="Spring Amigoscode" loading="lazy" />
+        <img src="certificates/introduccionprogramacion.png" alt="Introducción Programación" loading="lazy" />
+        <img src="certificates/javaBasico.png" alt="Java Básico" loading="lazy" />
+        <img src="certificates/javaavanzado.png" alt="Java Avanzado" loading="lazy" />
+        <img src="certificates/git.png" alt="Git" loading="lazy" />
+        <img src="certificates/springopen.png" alt="Spring Open" loading="lazy" />
+        <img src="certificates/fullstack.png" alt="Fullstack" loading="lazy" />
+      </div>
+    </section>
 
-<!-- END NAV -->
-<!-- START CERTIFICATES SECTION -->
-<section id="certificates-section" class="certificates-section">
-  <h2 class="certificates-section-header">Some certificates ...</h2>
-  <div class="certificates-grid">
-    <img src="certificates/certificado%20web%20design.png" />
-    <img src="certificates/javascript%20algorithms.png" />
-    <br/>
-    <img src="certificates/certificado%20java%20essential.png"/>
-    <img src="certificates/certificadoterminal%20.png"/>
-    <img src="certificates/springamigoscode.png"/>
-    <img src="certificates/introduccionprogramacion.png"/>
-    <img src="certificates/javaBasico.png"/>
-    <img src="certificates/javaavanzado.png"/>
-    <img src="certificates/git.png"/>
-    <img src="certificates/springopen.png"/>
-    <img src="certificates/fullstack.png"/>
-  </div>
-</section>
+    <section id="bootcamp-section" class="skill-up-section">
+      <h2 class="skills-up-section-header">Bootcamps</h2>
+      <div class="certificates-grid">
+        <img src="certificates/alkemy-certificate.png" alt="Alkemy" loading="lazy" />
+        <img src="css/idforideas.png" alt="ID for Ideas" loading="lazy" />
+        <img src="css/Open-Bootcamp.png" alt="Open Bootcamp" loading="lazy" />
+      </div>
+    </section>
 
-<section id="languaje-certificate-section" class="languaje-certificate-section">
-  <h2 class="languaje-certificate-section-header">Languaje Certificates</h2>
-  <div class="languaje-certificate-grid">
-    <img src="certificates/openenglish2.png"/>
-  </div>
-</section>
+    <section id="language-section" class="languaje-certificate-section">
+      <h2 class="languaje-certificate-section-header">Certificados de idioma</h2>
+      <div class="languaje-certificate-grid">
+        <img src="certificates/openenglish2.png" alt="Open English" loading="lazy" />
+      </div>
+    </section>
 
-<!-- END CERTIFICATES SECTION -->
-<section id="contact" class="contact-section">
-  <div class="contact-section-header">
-    <h2>Let's work together...</h2>
-    <p>How do you take your coffee?</p>
-  </div>
-  <div class="contact-links">
-    <a
-            id="profile-link"
-            href="https://github.com/stvteclas"
-            target="_blank"
-            class="btn contact-details"
-    ><i class="fab fa-github"></i> GitHub</a
-    >
-    <a
-            id="profile-link"
-            href="https://www.linkedin.com/in/stvteclas"
-            target="_blank"
-            class="btn contact-details"
-    >Linked<i class="fab fa-linkedin-in"></i
-    ></a>
+    <section id="contact" class="contact-section">
+      <div class="contact-container">
+        <h2>Contacto</h2>
+        <div class="contact-links">
+          <a href="https://github.com/stvteclas" target="_blank" rel="noopener noreferrer" class="btn contact-details"
+            ><i class="fab fa-github"></i> GitHub</a
+          >
+          <a href="https://www.linkedin.com/in/stvteclas" target="_blank" rel="noopener noreferrer" class="btn contact-details"
+            ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+          >
+          <a href="mailto:stvpablo@gmail.com" class="btn contact-details"
+            ><i class="fas fa-envelope"></i> stvpablo@gmail.com</a
+          >
+        </div>
+      </div>
+    </section>
 
-    <a
-            id="profile-link"
-            href="mailto:stvpablo@gmail.com"
-            class="btn contact-details"
-    ><i class="fas fa-at"></i> Send a mail</a
-    >
-    <a id="profile-link" href="tel:3541-330694" class="btn contact-details"
-    ><i class="fas fa-mobile-alt"></i> Call me</a
-    >
-  </div>
-</section>
-
-<!-- END CONTACT SECTION -->
-<!-- START FOOTER SECTION -->
-
-<footer>
-  <p>this is a real portfolio, enjoy</p>
-  <p>
-    &copy; Created for
-    <a href="https://www.linkedin.com/in/stvteclas" target="_blank"
-    >Pablo murgia <i class="fab fa-free-code-camp"></i
-    ></a>
-  </p>
-</footer>
-
-<!-- END FOOTER SECTION -->
-<script
-        data-cfasync="false"
-        src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-></script>
-
-</body>
+    <footer>
+      <p>&copy; 2026 Pablo Murgia · <a href="index.html">Volver al portafolio</a></p>
+    </footer>
+  </body>
 </html>

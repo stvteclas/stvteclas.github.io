@@ -1,315 +1,365 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pablo Murgia — Backend Developer Java & Spring Boot. Experiencia en migración de sistemas de salud digital: laboratorio, gestor de encuentros e interoperabilidad en SIGEHOS/DGSISAN."
+    />
+    <meta property="og:title" content="Pablo Murgia | Backend Developer" />
+    <meta
+      property="og:description"
+      content="Desarrollador backend con experiencia en migración de sistemas críticos en salud digital e interoperabilidad."
+    />
+    <title>Pablo Murgia | Backend Developer</title>
     <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Poppins:200i,300,400&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <!-- START NAV -->
-
-    <nav id="navbar" class="nav">
+    <nav id="navbar" class="nav" aria-label="Navegación principal">
+      <a href="#welcome-section" class="nav-brand">PM</a>
       <ul class="nav-list">
-        <li>
-          <a href="#welcome-section">Start</a>
-        </li>
-        <li>
-          <a href="#about-section">About me</a>
-        </li>
-        <li>
-          <a href=certificates.html>Certificates</a>
-        </li>
-        <li>
-          <a href="#skill-up-section">Bootcamp</a>
-        </li>
-
-        <li>
-          <a href="#projects">Works</a>
-        </li>
-        <li>
-          <a href="#contact">Contact</a>
-        </li>
+        <li><a href="#welcome-section">Inicio</a></li>
+        <li><a href="#about-section">Sobre mí</a></li>
+        <li><a href="#migrations-section">Migraciones</a></li>
+        <li><a href="#projects">Proyectos</a></li>
+        <li><a href="certificates.html">Formación</a></li>
+        <li><a href="#contact">Contacto</a></li>
       </ul>
-
     </nav>
 
-    <!-- END NAV -->
-    <!-- START WELCOME SECTION -->
-
-    <section id="welcome-section" class="welcome-section">
-      <img class="personal-image" src="css/IMG_20220722_001850.jpg" alt="project" />
-
-      <h1>Hey I am Pablo</h1>
-      <p>a java developer</p>
-
-      <i class="fab fa-java">java</i>
-      <div class="contact-links-footer">
-        <a
-                id="profile-link"
-                href="https://github.com/stvteclas"
-                target="_blank"
-                class="btn contact-details"
-        ><i class="fab fa-github"></i> GitHub</a
-        >
-        <a
-                id="profile-link"
-                href="https://www.linkedin.com/in/stvteclas"
-                target="_blank"
-                class="btn contact-details"
-        >Linked<i class="fab fa-linkedin-in"></i
-        ></a>
-
-        <a
-                id="profile-link"
-                href="mailto:stvpablo@gmail.com"
-                class="btn contact-details"
-        ><i class="fas fa-at"></i> Send a mail</a
-        >
-        <a id="profile-link" href="tel:3541-330694" class="btn contact-details"
-        ><i class="fas fa-mobile-alt"></i> Call me</a
-        >
-      </div>
-    </section>
-
-    <!-- END WELCOME SECTION -->
-    <section id="about-section" class="about-section">
-      <h1>About me</h1>
-      <p>a java developer</p>
-      <i class="fab fa-java">java</i>
-      <p>Some frameworks: spring, struts, hibernate, servlets, JDBC</p>
-      <i class="fab fa-js">javaScript</i>
-      <p>Some frameworks: Bootstrap, React, Jquery, Redux, Angular</p>
-      <br/>
-      <br/>
-      <ul>
-        <li>
-          <p>Extensive experience in the field of telecommunications.</p>
-        </li>
-        <li>
-          <p>Fullstack developer, I have knowledge in: Java, MySql, JDBC/JPA, GIT, MVC, Springboot, Html, Css, Thymeleaf.</p>
-        </li>
-        <li>
-          <p>Teamwork with agile and scrum methods.</p>
-        </li>
-        <li>
-          <p>
-            Passionate about programming and alwalys learning tools to continue
-            growing.
-          </p>
-        </li>
-
-      </ul>
-      <div class="contact-links">
-        <a
-                id="profile-link"
-                href="https://github.com/stvteclas"
-                target="_blank"
-                class="btn contact-details"
-        ><i class="fab fa-github"></i> GitHub</a
-        >
-        <a
-                id="profile-link"
-                href="https://www.linkedin.com/in/stvteclas"
-                target="_blank"
-                class="btn contact-details"
-        >Linked<i class="fab fa-linkedin-in"></i
-        ></a>
-
-        <a
-                id="profile-link"
-                href="mailto:stvpablo@gmail.com"
-                class="btn contact-details"
-        ><i class="fas fa-at"></i> Send a mail</a
-        >
-        <a id="profile-link" href="tel:3541-330694" class="btn contact-details"
-        ><i class="fas fa-mobile-alt"></i> Call me</a
-        >
-      </div>
-    </section>
-    <!-- END ABOUT SECTION -->
-    <section id="skill-up-section" class="skill-up-section">
-      <h2 class="skills-up-section-header">Bootcamp ...</h2>
-      <div class="skill-up-grid">
-        <img src="certificates/alkemy-certificate.png"/>
-      </div>
-      <div class="skill-up-grid">
-        <img src="css/idforideas.png"/>
-      </div>
-      <div class="skill-up-grid">
-        <img src="css/Open-Bootcamp.png"/>
-      </div>
-    </section>
-    <!-- START PROJECTS SECTION -->
-
-    <section id="projects" class="projects-section">
-      <h2 class="projects-section-header">These are some of my projects</h2>
-
-      <div class="projects-grid">
-        <a
-                href="https://github.com/stvteclas/wikideas"
-                target="_blank"
-                class="project project-tile"
-        >
-          <img
-                  class="project-image"
-                  src="css/wikideas.png"
-                  alt="project"
-          />
-          <p class="project-title">
-            <span class="code">&lt;</span>
-            Wikideas
-            <span class="code">&#47;&gt;</span>
-          </p>
-        <a
-                href="https://github.com/stvteclas/Skill-Up-Java"
-                target="_blank"
-                class="project project-tile"
-        >
-          <img
-                  class="project-image"
-                  src="css/wallet.jpeg"
-                  alt="project"
-          />
-          <p class="project-title">
-            <span class="code">&lt;</span>
-            Alkybank-wallet
-            <span class="code">&#47;&gt;</span>
-          </p>
+    <header id="welcome-section" class="welcome-section">
+      <div class="welcome-content">
+        <img
+          class="personal-image"
+          src="css/pabloselfie.jpg"
+          alt="Foto de Pablo Murgia"
+          width="200"
+          height="200"
+        />
+        <p class="welcome-eyebrow">Backend Developer</p>
+        <h1>Pablo Murgia</h1>
+        <p class="welcome-tagline">
+          Especializado en <strong>Java</strong> y <strong>Spring Boot</strong>, con
+          experiencia en migración de sistemas críticos de salud digital,
+          interoperabilidad y arquitecturas de integración.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">SIGEHOS</span>
+          <span class="badge">Interoperabilidad</span>
+          <span class="badge">HL7 / FHIR</span>
+          <span class="badge">Telecomunicaciones</span>
+        </div>
+        <div class="contact-links-footer">
           <a
-                  href="https://github.com/stvteclas/disney-api"
-                  target="_blank"
-                  class="project project-tile"
+            href="https://github.com/stvteclas"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+            ><i class="fab fa-github"></i> GitHub</a
           >
-            <img
-                    class="project-image"
-                    src="css/disneys.jpeg"
-                    alt="project"
-            />
-            <p class="project-title">
-              <span class="code">&lt;</span>
-              Disney-API
-              <span class="code">&#47;&gt;</span>
-            </p>
-        <a
-          href="https://github.com/stvteclas/ControlClientes.git"
-          target="_blank"
-          class="project project-tile"
-        >
-          <img
-            class="project-image"
-            src="css/control%20de%20clientes.png"
-            alt="project"
-          />
-          <p class="project-title">
-            <span class="code">&lt;</span>
-            Control Clientes
-            <span class="code">&#47;&gt;</span>
-          </p>
-        </a>
-            <a
-                    href="https://github.com/stvteclas/aplicacionpresupuesto"
-                    target="_blank"
-                    class="project project-tile"
-            >
-              <img class="project-image" src="css/presupuesto.png" alt="project" />
-              <p class="project-title">
-                <span class="code">&lt;</span>
-                Presupuesto
-                <span class="code">&#47;&gt;</span>
+          <a
+            href="https://www.linkedin.com/in/stvteclas"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-outline"
+            ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+          >
+          <a href="mailto:stvpablo@gmail.com" class="btn btn-primary"
+            ><i class="fas fa-envelope"></i> Contactar</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="about-section" class="about-section section">
+        <div class="container">
+          <h2 class="section-title">Sobre mí</h2>
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                Desarrollador backend con trayectoria en
+                <strong>telecomunicaciones</strong> y
+                <strong>salud digital pública</strong>. Participé en la migración y
+                evolución de módulos críticos del ecosistema
+                <strong>SIGEHOS</strong> (DGSISAN, GCBA), trabajando en entornos de
+                alta exigencia operativa con metodologías ágiles.
               </p>
-            </a>
-        <a
-          href="https://github.com/stvteclas/listadodepersonas"
-          target="_blank"
-          class="project project-tile"
-        >
-          <img
-            class="project-image"
-            src="css/listado%20de%20personas.png"
-            alt="project"
-          />
-          <p class="project-title">
-            <span class="code">&lt;</span>
-            Listado de Personas
-            <span class="code">&#47;&gt;</span>
+              <p>
+                Mi foco está en la migración de sistemas legacy hacia arquitecturas
+                modernas, la integración entre servicios y el cumplimiento de
+                estándares de interoperabilidad en salud.
+              </p>
+            </div>
+            <div class="skills-panel">
+              <h3>Stack principal</h3>
+              <div class="skill-group">
+                <h4>Backend</h4>
+                <div class="skill-tags">
+                  <span>Java</span>
+                  <span>Spring Boot</span>
+                  <span>Hibernate / JPA</span>
+                  <span>REST APIs</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <h4>Integración</h4>
+                <div class="skill-tags">
+                  <span>HL7 FHIR</span>
+                  <span>Bus de interoperabilidad</span>
+                  <span>ESB / Mensajería</span>
+                  <span>Interfaces LIS</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <h4>Datos &amp; DevOps</h4>
+                <div class="skill-tags">
+                  <span>PostgreSQL</span>
+                  <span>MySQL</span>
+                  <span>Git</span>
+                  <span>Docker</span>
+                </div>
+              </div>
+              <div class="skill-group">
+                <h4>Frontend</h4>
+                <div class="skill-tags">
+                  <span>React</span>
+                  <span>Angular</span>
+                  <span>Thymeleaf</span>
+                  <span>HTML / CSS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="migrations-section" class="migrations-section section">
+        <div class="container">
+          <h2 class="section-title">Experiencia en migraciones</h2>
+          <p class="section-subtitle">
+            Proyectos de transformación digital en el Sistema de Gestión Hospitalaria
+            (SIGEHOS) — Dirección General de Sistemas de Información Sanitaria
+            (DGSISAN), GCBA.
           </p>
-        </a>
-      </div>
-      <a
-        href="https://github.com/stvteclas?tab=repositories"
-        class="btn btn-show-all"
-        target="_blank"
-        >Show all repositories<i class="fas fa-chevron-right"></i
-      ></a>
 
+          <div class="migrations-grid">
+            <article class="migration-card featured">
+              <div class="migration-card-header">
+                <span class="migration-icon"><i class="fas fa-flask"></i></span>
+                <span class="migration-type">Migración híbrida · En progreso</span>
+              </div>
+              <h3>Efector Web Angular — Laboratorio</h3>
+              <p>
+                Estrategia de migración gradual: frontend Angular 17, backend
+                laboratorio-service (Spring Boot 3 + Java 21) y coexistencia temporal
+                con labController legacy en Glassfish.
+              </p>
+              <ul class="migration-highlights">
+                <li>Auth moderna: Sigehos + JWT</li>
+                <li>Interceptor HTTP híbrido</li>
+                <li>Migración endpoint por endpoint</li>
+                <li>Zero downtime para usuarios</li>
+              </ul>
+              <div class="migration-stack">
+                <span>Angular 17</span>
+                <span>Spring Boot 3</span>
+                <span>Java 21</span>
+                <span>Sigehos</span>
+              </div>
+              <a href="casos/laboratorio.html" class="btn btn-card"
+                >Ver caso de estudio <i class="fas fa-arrow-right"></i
+              ></a>
+            </article>
+
+            <article class="migration-card">
+              <div class="migration-card-header">
+                <span class="migration-icon"><i class="fas fa-calendar-check"></i></span>
+                <span class="migration-type">Migración · Producción</span>
+              </div>
+              <h3>Gestor de Encuentros (GDE)</h3>
+              <p>
+                Migración del módulo de gestión de encuentros y turnos hacia la nueva
+                arquitectura interoperable, habilitando continuidad asistencial y
+                flujos ambulatorios integrados con la Historia Integral de Salud.
+              </p>
+              <ul class="migration-highlights">
+                <li>Gestión de turnos y demanda espontánea</li>
+                <li>Integración con módulos clínicos</li>
+                <li>Planes de contingencia operativa</li>
+              </ul>
+              <div class="migration-stack">
+                <span>Java</span>
+                <span>SIGEHOS</span>
+                <span>FHIR</span>
+              </div>
+              <a href="casos/gestor-encuentro.html" class="btn btn-card"
+                >Ver caso de estudio <i class="fas fa-arrow-right"></i
+              ></a>
+            </article>
+
+            <article class="migration-card">
+              <div class="migration-card-header">
+                <span class="migration-icon"><i class="fas fa-network-wired"></i></span>
+                <span class="migration-type">Migración · Arquitectura</span>
+              </div>
+              <h3>Bus de Interoperabilidad</h3>
+              <p>
+                Evolución del bus central de mensajería que conecta sistemas de salud
+                municipales, provinciales y nacionales, garantizando intercambio
+                seguro y trazable de información clínica.
+              </p>
+              <ul class="migration-highlights">
+                <li>Adaptadores y transformación de mensajes</li>
+                <li>Integración con Red Nacional de Salud Digital</li>
+                <li>Federador de personas y terminología</li>
+              </ul>
+              <div class="migration-stack">
+                <span>ESB</span>
+                <span>HL7 FHIR</span>
+                <span>APIs</span>
+              </div>
+              <a href="casos/bus-interoperabilidad.html" class="btn btn-card"
+                >Ver caso de estudio <i class="fas fa-arrow-right"></i
+              ></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="projects-section section">
+        <div class="container">
+          <h2 class="section-title">Proyectos personales</h2>
+          <p class="section-subtitle">
+            Desarrollos complementarios que demuestran práctica con APIs, arquitectura
+            y buenas prácticas de desarrollo.
+          </p>
+
+          <div class="projects-grid">
+            <a
+              href="https://github.com/stvteclas/disney-api"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project project-tile"
+            >
+              <img
+                class="project-image"
+                src="css/disneys.jpeg"
+                alt="Disney API"
+                loading="lazy"
+              />
+              <div class="project-body">
+                <p class="project-title">
+                  <span class="code">&lt;</span> Disney API
+                  <span class="code">/&gt;</span>
+                </p>
+                <p class="project-desc">API REST con Spring Boot y consumo de servicios externos.</p>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/stvteclas/wikideas"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project project-tile"
+            >
+              <img
+                class="project-image"
+                src="css/wikideas.png"
+                alt="Wikideas"
+                loading="lazy"
+              />
+              <div class="project-body">
+                <p class="project-title">
+                  <span class="code">&lt;</span> Wikideas
+                  <span class="code">/&gt;</span>
+                </p>
+                <p class="project-desc">Aplicación fullstack para gestión de ideas y contenido.</p>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/stvteclas/Skill-Up-Java"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="project project-tile"
+            >
+              <img
+                class="project-image"
+                src="css/wallet.jpeg"
+                alt="Alkybank Wallet"
+                loading="lazy"
+              />
+              <div class="project-body">
+                <p class="project-title">
+                  <span class="code">&lt;</span> Alkybank Wallet
+                  <span class="code">/&gt;</span>
+                </p>
+                <p class="project-desc">Billetera virtual con arquitectura backend en Java.</p>
+              </div>
+            </a>
+          </div>
+
+          <a
+            href="https://github.com/stvteclas?tab=repositories"
+            class="btn btn-show-all"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Ver todos en GitHub <i class="fas fa-chevron-right"></i
+          ></a>
+        </div>
+      </section>
+    </main>
+
+    <section id="contact" class="contact-section section">
+      <div class="container contact-container">
+        <h2>¿Trabajamos juntos?</h2>
+        <p>Disponible para proyectos de backend, integración y migración de sistemas.</p>
+        <div class="contact-links">
+          <a
+            href="https://github.com/stvteclas"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn contact-details"
+            ><i class="fab fa-github"></i> GitHub</a
+          >
+          <a
+            href="https://www.linkedin.com/in/stvteclas"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn contact-details"
+            ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+          >
+          <a href="mailto:stvpablo@gmail.com" class="btn contact-details"
+            ><i class="fas fa-envelope"></i> stvpablo@gmail.com</a
+          >
+        </div>
+      </div>
     </section>
-
-    <!-- END PROJECTS SECTION -->
-
-    <!-- START CONTACT SECTION -->
-
-    <section id="contact" class="contact-section">
-      <div class="contact-section-header">
-        <h2>Let's work together...</h2>
-        <p>How do you take your coffee?</p>
-      </div>
-      <div class="contact-links">
-        <a
-          id="profile-link"
-          href="https://github.com/stvteclas"
-          target="_blank"
-          class="btn contact-details"
-          ><i class="fab fa-github"></i> GitHub</a
-        >
-        <a
-          id="profile-link"
-          href="https://www.linkedin.com/in/stvteclas"
-          target="_blank"
-          class="btn contact-details"
-          >Linked<i class="fab fa-linkedin-in"></i
-        ></a>
-
-        <a
-          id="profile-link"
-          href="mailto:stvpablo@gmail.com"
-          class="btn contact-details"
-          ><i class="fas fa-at"></i> Send a mail</a
-        >
-        <a id="profile-link" href="tel:3541-330694" class="btn contact-details"
-          ><i class="fas fa-mobile-alt"></i> Call me</a
-        >
-      </div>
-    </section>
-
-    <!-- END CONTACT SECTION -->
-    <!-- START FOOTER SECTION -->
 
     <footer>
-      <p>this is a real portfolio, enjoy</p>
+      <p>&copy; 2026 Pablo Murgia. Desarrollado con dedicación.</p>
       <p>
-        &copy; Created for
-        <a href="https://www.linkedin.com/in/stvteclas" target="_blank"
-          >Pablo murgia <i class="fab fa-free-code-camp"></i
-        ></a>
+        <a href="https://www.linkedin.com/in/stvteclas" target="_blank" rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        ·
+        <a href="https://github.com/stvteclas" target="_blank" rel="noopener noreferrer"
+          >GitHub</a
+        >
       </p>
     </footer>
-
-    <!-- END FOOTER SECTION -->
-    <script
-      data-cfasync="false"
-      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
-    ></script>
   </body>
 </html>
