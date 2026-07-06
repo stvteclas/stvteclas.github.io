@@ -42,4 +42,4 @@ Para incorporar documentación técnica local, copiar archivos a `docs/casos/<pr
 
 - GitHub: [@stvteclas](https://github.com/stvteclas)
 - LinkedIn: [stvteclas](https://www.linkedin.com/in/stvteclas)
-- Email: stvpablo@gmail.com
+- Email: pablo.murgia23@gmail.com
