@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Caso de estudio: Migración del Gestor de Encuentros (GDE) en SIGEHOS."
+    />
+    <title>Migración Gestor de Encuentros | Pablo Murgia</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="../index.html" class="nav-brand">PM</a>
+      <ul class="nav-list">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../index.html#migrations-section">Migraciones</a></li>
+        <li><a href="../index.html#contact">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <main class="case-study">
+      <header class="case-header">
+        <a href="../index.html#migrations-section" class="case-back"
+          ><i class="fas fa-arrow-left"></i> Volver a migraciones</a
+        >
+        <span class="migration-type">Migración · SIGEHOS / DGSISAN</span>
+        <h1>Migración del Gestor de Encuentros (GDE)</h1>
+        <p class="case-lead">
+          Evolución del módulo de gestión de encuentros y turnos hacia la arquitectura
+          interoperable de la Historia Integral de Salud, habilitando continuidad
+          asistencial en efectores públicos de la Ciudad de Buenos Aires.
+        </p>
+      </header>
+
+      <div class="container case-content">
+        <section class="case-block">
+          <h2><i class="fas fa-bullseye"></i> Contexto</h2>
+          <p>
+            El Gestor de Encuentros (GDE) fue creado como módulo dentro de SIGEHOS para
+            administrar turnos, demanda espontánea y encuentros clínicos. Su migración
+            responde a la necesidad de interoperar con la Red Nacional de Salud Digital
+            y estandarizar flujos de información entre jurisdicciones.
+          </p>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-exclamation-triangle"></i> Desafíos</h2>
+          <div class="challenge-grid">
+            <div class="challenge-item">
+              <h3>Alta concurrencia</h3>
+              <p>Gestión de turnos en múltiples efectores con picos de demanda en horarios pico.</p>
+            </div>
+            <div class="challenge-item">
+              <h3>Reglas de negocio complejas</h3>
+              <p>Modalidades distintas: programada, espontánea, sobreturnos y derivaciones.</p>
+            </div>
+            <div class="challenge-item">
+              <h3>Interoperabilidad</h3>
+              <p>Integración con módulos clínicos, laboratorio y bus de mensajería.</p>
+            </div>
+            <div class="challenge-item">
+              <h3>Contingencias operativas</h3>
+              <p>Planes de contingencia para GDE ambulatorio y laboratorio ante fallas.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-code"></i> Stack y alcance</h2>
+          <div class="skill-tags">
+            <span>Java</span>
+            <span>Spring Boot</span>
+            <span>SIGEHOS</span>
+            <span>HL7 FHIR</span>
+            <span>REST APIs</span>
+            <span>PostgreSQL</span>
+          </div>
+        </section>
+
+        <section class="case-block case-cta">
+          <p class="case-note">
+            <i class="fas fa-lock"></i>
+            Detalle técnico disponible en entrevista. Documentación en
+            <code>docs/casos/gestor-encuentro/</code>.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:stvpablo@gmail.com" class="btn btn-primary"
+              ><i class="fas fa-envelope"></i> Contactar</a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Pablo Murgia · <a href="../index.html">Portafolio</a></p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Caso de estudio: Migración del Bus de Interoperabilidad en salud digital."
+    />
+    <title>Migración Bus Interoperabilidad | Pablo Murgia</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="../index.html" class="nav-brand">PM</a>
+      <ul class="nav-list">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../index.html#migrations-section">Migraciones</a></li>
+        <li><a href="../index.html#contact">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <main class="case-study">
+      <header class="case-header">
+        <a href="../index.html#migrations-section" class="case-back"
+          ><i class="fas fa-arrow-left"></i> Volver a migraciones</a
+        >
+        <span class="migration-type">Migración · Arquitectura</span>
+        <h1>Migración del Bus de Interoperabilidad</h1>
+        <p class="case-lead">
+          Evolución del bus central de mensajería que conecta sistemas de salud
+          municipales, provinciales y nacionales, garantizando intercambio seguro y
+          trazable de información clínica bajo estándares HL7 FHIR.
+        </p>
+      </header>
+
+      <div class="container case-content">
+        <section class="case-block">
+          <h2><i class="fas fa-bullseye"></i> Contexto</h2>
+          <p>
+            El bus de interoperabilidad actúa como capa de integración entre SIGEHOS y
+            la Red Nacional de Salud Digital: adapta mensajes, enruta solicitudes y
+            conecta con servicios como el Federador Nacional de Personas (RENAPER) y
+            terminología SNOMED CT.
+          </p>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-sitemap"></i> Componentes clave</h2>
+          <div class="architecture-diagram">
+            <div class="arch-layer arch-highlight">
+              <span class="arch-label">Bus de Interoperabilidad</span>
+              <div class="arch-nodes">
+                <span>Adaptadores HL7/FHIR</span>
+                <span>Transformación</span>
+                <span>Enrutamiento</span>
+                <span>Trazabilidad</span>
+              </div>
+            </div>
+            <div class="arch-arrow">↕</div>
+            <div class="arch-layer">
+              <span class="arch-label">Sistemas conectados</span>
+              <div class="arch-nodes">
+                <span>SIGEHOS</span>
+                <span>Laboratorio</span>
+                <span>GDE</span>
+                <span>Red Nacional</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-code"></i> Stack</h2>
+          <div class="skill-tags">
+            <span>ESB</span>
+            <span>HL7 FHIR</span>
+            <span>REST APIs</span>
+            <span>Java</span>
+            <span>Mensajería</span>
+            <span>RENAPER</span>
+          </div>
+        </section>
+
+        <section class="case-block case-cta">
+          <p class="case-note">
+            <i class="fas fa-lock"></i>
+            Detalle técnico disponible en entrevista. Documentación en
+            <code>docs/casos/bus-interoperabilidad/</code>.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:stvpablo@gmail.com" class="btn btn-primary"
+              ><i class="fas fa-envelope"></i> Contactar</a
+            >
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Pablo Murgia · <a href="../index.html">Portafolio</a></p>
+    </footer>
+  </body>
+</html>
