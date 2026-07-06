@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Migración de 9 microservicios GDE a standalone: desacople de gobtur-platform y gobtur-common, Spring Boot 3.5.6, Java 21."
+      content="GobTur Platform: migración del Gestor de Encuentros de monolito a microservicios. Etapa 1: ecosistema MS. Etapa 2: standalone Java 21."
     />
-    <title>Migración GDE — Microservicios Standalone | Pablo Murgia</title>
+    <title>GobTur Platform — Gestor de Encuentros | Pablo Murgia</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
       rel="stylesheet"
@@ -15,13 +15,19 @@
       crossorigin="anonymous"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
+    <div class="bg-blobs" aria-hidden="true">
+      <span class="blob blob-1"></span>
+      <span class="blob blob-2"></span>
+      <span class="blob blob-3"></span>
+    </div>
+
     <nav class="nav" aria-label="Navegación principal">
-      <a href="../index.html" class="nav-brand">PM</a>
+      <a href="../index.html" class="nav-brand"><span class="nav-brand-dot"></span> Pablo Murgia</a>
       <ul class="nav-list">
         <li><a href="../index.html">Inicio</a></li>
         <li><a href="../index.html#migrations-section">Migraciones</a></li>
@@ -34,53 +40,254 @@
         <a href="../index.html#migrations-section" class="case-back"
           ><i class="fas fa-arrow-left"></i> Volver a migraciones</a
         >
-        <span class="migration-type">Migración completada · Jun 2026</span>
-        <h1>Gestor de Encuentros — Microservicios Standalone</h1>
+        <span class="migration-type tag-violet">GobTur Platform · Mayo 2026</span>
+        <h1>Gestor de Encuentros — GobTur Platform</h1>
         <p class="case-lead">
-          Desacople de <strong>9 microservicios</strong> del reactor
-          <code>gobtur-platform</code> y la dependencia compartida
-          <code>gobtur-common</code>, siguiendo el patrón de
-          <code>laboratorio-service</code>: parent directo
-          <code>spring-boot-starter-parent</code> y código común embebido en cada
-          servicio.
+          Programa de migración del legacy del <strong>Gestor de Encuentros</strong> (y visión
+          unificada con <strong>RIS</strong>) hacia un ecosistema de microservicios con
+          responsabilidades claras, integraciones centralizadas y despliegues por dominio.
         </p>
         <div class="hero-badges">
-          <span class="badge">Spring Boot 3.5.6</span>
-          <span class="badge">Java 21</span>
-          <span class="badge">9 microservicios</span>
-          <span class="badge">Maven standalone</span>
-          <span class="badge">Resilience4j</span>
+          <span class="badge">7 fases</span>
+          <span class="badge">~32% avance</span>
+          <span class="badge">Oracle GOB_TUR</span>
+          <span class="badge">GCBA</span>
         </div>
       </header>
 
       <div class="container case-content">
+        <!-- Resumen ejecutivo -->
         <section class="case-block">
-          <h2><i class="fas fa-bullseye"></i> Visión general</h2>
+          <h2><i class="fas fa-bullseye"></i> Resumen ejecutivo</h2>
           <p>
-            La plataforma <strong>gdea-back</strong> evolucionó de un monorepo Maven
-            multi-módulo hacia <strong>9 proyectos Maven independientes</strong>, cada
-            uno listo para moverse a su propio repositorio. El reactor padre
-            (<code>gdea-back/pom.xml</code>) y el módulo
-            <code>gobtur-common</code> fueron eliminados tras completar la migración.
+            El Gestor de Encuentros y RIS comparten dominio de negocio (agenda, turnos,
+            integraciones con el ecosistema de salud) pero mantenían backends duplicados y
+            múltiples puntos de salida hacia sistemas externos (Master File, Sigehos, HIS…).
+          </p>
+          <p>
+            <strong>GobTur Platform</strong> transforma el monolito del Gestor en
+            microservicios especializados. Cuando el tramo esté probado en producción, se
+            incorporará la lógica de RIS back en los mismos servicios: un solo ecosistema
+            para el front del Gestor y el front de RIS.
           </p>
           <div class="results-grid">
             <div class="result-item">
-              <span class="result-number">9</span>
-              <span class="result-label">Microservicios standalone</span>
+              <span class="result-number">7</span>
+              <span class="result-label">Microservicios + librería común</span>
             </div>
             <div class="result-item">
-              <span class="result-number">0</span>
-              <span class="result-label">Dependencias de reactor padre</span>
+              <span class="result-number">1</span>
+              <span class="result-label">Único egress a terceros (8082)</span>
             </div>
             <div class="result-item">
-              <span class="result-number">100%</span>
-              <span class="result-label">Compilación aislada por servicio</span>
+              <span class="result-number">~32%</span>
+              <span class="result-label">Avance global del programa</span>
             </div>
           </div>
         </section>
 
+        <!-- Antes vs Después -->
         <section class="case-block">
-          <h2><i class="fas fa-table"></i> Estado de servicios</h2>
+          <h2><i class="fas fa-exchange-alt"></i> De monolito a microservicios</h2>
+          <div class="flow-grid">
+            <div class="flow-card arch-legacy-box">
+              <h3>Hoy (legacy)</h3>
+              <ul>
+                <li>Gestor front → Monolito Gestor de Encuentros</li>
+                <li>RIS front → RIS back</li>
+                <li>Ambos conectan a MF, Sigehos, HIS por separado</li>
+                <li>Reglas duplicadas y despliegues de alto riesgo</li>
+              </ul>
+            </div>
+            <div class="flow-card arch-target-box">
+              <h3>Objetivo (GobTur Platform)</h3>
+              <ul>
+                <li>Gestor front + RIS front → Gateway → MS</li>
+                <li><code>external-services</code> (8082) único punto a terceros</li>
+                <li>Una regla, un lugar — despliegue por dominio</li>
+                <li>Escalado selectivo (agenda, reportes…)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mapa de servicios -->
+        <section class="case-block">
+          <h2><i class="fas fa-sitemap"></i> Mapa de microservicios</h2>
+          <div class="table-wrap">
+            <table class="services-table">
+              <thead>
+                <tr>
+                  <th>Servicio</th>
+                  <th>Puerto</th>
+                  <th>Responsabilidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>dominio-service</code></td>
+                  <td>8081</td>
+                  <td>Dominios, feriados, parámetros, configuración institucional</td>
+                </tr>
+                <tr class="row-highlight">
+                  <td><code>external-services</code></td>
+                  <td>8082</td>
+                  <td>Único egress: MF, Sigehos, HIS, PEL, RIS bridge</td>
+                </tr>
+                <tr>
+                  <td><code>agenda-service</code></td>
+                  <td>8083</td>
+                  <td>Agendas, horarios, turnos, oferta</td>
+                </tr>
+                <tr>
+                  <td><code>hub-service</code></td>
+                  <td>8084</td>
+                  <td>Panel de migración; semáforo por servicio</td>
+                </tr>
+                <tr>
+                  <td><code>notificacion-service</code></td>
+                  <td>8085</td>
+                  <td>Mail, Boti, notificaciones</td>
+                </tr>
+                <tr>
+                  <td><code>reportes-services</code></td>
+                  <td>8086</td>
+                  <td>Reportes y demandas insatisfechas</td>
+                </tr>
+                <tr>
+                  <td><code>login-service</code></td>
+                  <td>8087</td>
+                  <td>Autenticación, usuarios, sesión</td>
+                </tr>
+                <tr>
+                  <td><code>gobtur-common</code></td>
+                  <td>—</td>
+                  <td>Librería compartida (HTTP, secuencias, utilidades)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="case-note">
+            <i class="fas fa-database"></i>
+            Base de datos: esquema Oracle <code>GOB_TUR</code> compartido en transición.
+          </p>
+        </section>
+
+        <!-- ETAPA 1 -->
+        <section class="case-block etapa-block">
+          <div class="etapa-label tag-cyan">Etapa 1</div>
+          <h2><i class="fas fa-layer-group"></i> Programa GobTur Platform (7 fases)</h2>
+          <p>
+            Migración progresiva del monolito Gestor hacia microservicios. Avance orientativo
+            alineado al documento de arquitectura (mayo 2026).
+          </p>
+
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" style="width: 32%"></div>
+            <span class="progress-label">~32% — Fase 2 en curso</span>
+          </div>
+
+          <div class="phases-timeline">
+            <div class="phase phase-done">
+              <span class="phase-status"><i class="fas fa-check-circle"></i> Fase 0 · 5%</span>
+              <h3>Cimientos</h3>
+              <p>Build, CI, observabilidad — compilar, desplegar y monitorear cada MS.</p>
+            </div>
+            <div class="phase phase-done">
+              <span class="phase-status"><i class="fas fa-check-circle"></i> Fase 1 · 17%</span>
+              <h3>Dominio</h3>
+              <p><code>dominio-service</code> (8081) + front parcial en modo MS.</p>
+            </div>
+            <div class="phase phase-active">
+              <span class="phase-status"><i class="fas fa-spinner"></i> Fase 2 · 32% ← actual</span>
+              <h3>Integraciones externas centralizadas</h3>
+              <p>
+                Meta: ningún MS (salvo <code>external-services</code>) abre conexiones a MF,
+                Sigehos, HIS. Login → MF solo vía 8082.
+              </p>
+              <ul>
+                <li>HTTP compartido (gobtur-common) — hecho</li>
+                <li>Login sin egress directo a Master File — hecho</li>
+                <li>Poda credenciales <code>masterfile.*</code> en otros MS — hecho</li>
+                <li>Sigehos / HIS / PEL por familia — planificado</li>
+              </ul>
+            </div>
+            <div class="phase">
+              <span class="phase-status"><i class="fas fa-circle"></i> Fase 3 · 54%</span>
+              <h3>Agenda</h3>
+              <p>Agenda y turnos como dueño claro en 8083; strangler del monolito.</p>
+            </div>
+            <div class="phase">
+              <span class="phase-status"><i class="fas fa-circle"></i> Fases 4–7</span>
+              <h3>Reserva → Notificaciones → Reportes → Apagar monolito</h3>
+              <p>76% → 86% → 94% → 100% retiro del monolito Gestor.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Logros Etapa 1 -->
+        <section class="case-block">
+          <h2><i class="fas fa-trophy"></i> Entregables ya logrados (Etapa 1)</h2>
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <i class="fas fa-cubes"></i>
+              <h3>Reactor 7 MS + common</h3>
+              <p>Compilando en CI — base industrializable.</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-sign-in-alt"></i>
+              <h3>Login dedicado :8087</h3>
+              <p>Autenticación desacoplada del monolito.</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-shield-alt"></i>
+              <h3>MF solo vía :8082</h3>
+              <p>Menos secretos; un solo camino a Master File.</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-tachometer-alt"></i>
+              <h3>Hub migración :8084</h3>
+              <p>Semáforo por servicio — visibilidad de avance.</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-code-branch"></i>
+              <h3>Front modo --ms</h3>
+              <p>Equipo valida contra microservicios reales en dev.</p>
+            </div>
+            <div class="benefit-item">
+              <i class="fas fa-file-code"></i>
+              <h3>gobtur-ms-urls.env</h3>
+              <p>Un contrato de URLs por ambiente (dev/hml/prod).</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ETAPA 2 -->
+        <section class="case-block etapa-block">
+          <div class="etapa-label tag-violet">Etapa 2</div>
+          <h2><i class="fas fa-box-open"></i> Microservicios Standalone (Jun 2026)</h2>
+          <p>
+            Una vez consolidado el ecosistema GobTur, se ejecutó el desacople de cada servicio
+            del reactor <code>gobtur-platform</code> y la dependencia
+            <code>gobtur-common</code>: cada carpeta bajo <code>gdea-back/</code> pasó a ser un
+            proyecto Maven independiente, listo para su propio repositorio.
+          </p>
+
+          <div class="results-grid">
+            <div class="result-item">
+              <span class="result-number">9</span>
+              <span class="result-label">MS standalone</span>
+            </div>
+            <div class="result-item">
+              <span class="result-number">0</span>
+              <span class="result-label">Reactor padre</span>
+            </div>
+            <div class="result-item">
+              <span class="result-number">21</span>
+              <span class="result-label">Java + Spring Boot 3.5.6</span>
+            </div>
+          </div>
+
           <div class="table-wrap">
             <table class="services-table">
               <thead>
@@ -91,222 +298,78 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><code>dominio-service</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>Primera plantilla de referencia</td>
-                </tr>
-                <tr>
-                  <td><code>login-service</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>—</td>
-                </tr>
-                <tr>
-                  <td><code>external-services</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>—</td>
-                </tr>
-                <tr>
-                  <td><code>agenda-service</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>—</td>
-                </tr>
-                <tr>
-                  <td><code>hub-service</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>Requiere <code>spring-boot-starter-data-jpa</code></td>
-                </tr>
-                <tr>
-                  <td><code>notificacion-service</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>—</td>
-                </tr>
-                <tr>
-                  <td><code>reportes-services</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>—</td>
-                </tr>
-                <tr>
-                  <td><code>licencia-service</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>Aislamiento del dominio licencias (puerto 8088)</td>
-                </tr>
-                <tr>
-                  <td><code>gestor-bff-service</code></td>
-                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
-                  <td>Resilience4j rate-limiter + JPA explícitos</td>
-                </tr>
-                <tr class="row-removed">
-                  <td><code>gobtur-common</code></td>
-                  <td><span class="status-removed"><i class="fas fa-times"></i> Eliminado</span></td>
-                  <td>Código embebido en cada servicio</td>
-                </tr>
-                <tr class="row-removed">
-                  <td><code>gobtur-platform</code></td>
-                  <td><span class="status-removed"><i class="fas fa-times"></i> Eliminado</span></td>
-                  <td>Reactor <code>gdea-back/pom.xml</code> ya no existe</td>
-                </tr>
+                <tr><td><code>dominio-service</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>Primera plantilla</td></tr>
+                <tr><td><code>login-service</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>—</td></tr>
+                <tr><td><code>external-services</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>—</td></tr>
+                <tr><td><code>agenda-service</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>—</td></tr>
+                <tr><td><code>hub-service</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>JPA explícito</td></tr>
+                <tr><td><code>notificacion-service</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>—</td></tr>
+                <tr><td><code>reportes-services</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>—</td></tr>
+                <tr><td><code>licencia-service</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>Puerto 8088, dominio licencias</td></tr>
+                <tr><td><code>gestor-bff-service</code></td><td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td><td>Resilience4j + JPA</td></tr>
+                <tr class="row-removed"><td><code>gobtur-common</code></td><td><span class="status-removed"><i class="fas fa-times"></i> Eliminado</span></td><td>Código embebido en cada MS</td></tr>
+                <tr class="row-removed"><td><code>gobtur-platform</code></td><td><span class="status-removed"><i class="fas fa-times"></i> Eliminado</span></td><td>Reactor eliminado</td></tr>
               </tbody>
             </table>
           </div>
-        </section>
 
-        <section class="case-block">
-          <h2><i class="fas fa-sitemap"></i> Arquitectura resultante</h2>
-          <div class="architecture-diagram arch-three-col arch-services">
-            <div class="arch-box arch-legacy">
-              <h3>Antes</h3>
-              <span class="arch-tech">Monorepo Maven</span>
-              <ul>
-                <li>gobtur-platform (reactor)</li>
-                <li>gobtur-common (shared)</li>
-                <li>9 MS acoplados al parent</li>
-              </ul>
-            </div>
-            <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
-            <div class="arch-box arch-highlight">
-              <h3>Después</h3>
-              <span class="arch-tech">9 proyectos independientes</span>
-              <ul>
-                <li>spring-boot-starter-parent 3.5.6</li>
-                <li>Java 21 por servicio</li>
-                <li>Common embebido localmente</li>
-                <li>Listo para repo dedicado</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section class="case-block">
-          <h2><i class="fas fa-tasks"></i> Procedimiento por servicio</h2>
-          <div class="phases-timeline">
-            <div class="phase phase-done">
-              <span class="phase-status"><i class="fas fa-check-circle"></i> Paso 1</span>
-              <h3>Copiar fuentes de gobtur-common</h3>
-              <ul>
-                <li>
-                  <code>ar/gob/gcba/his/gobtur/common/**</code> → misma ruta en el
-                  servicio
-                </li>
-                <li>
-                  Subpaquetes <code>comun</code>, <code>exception</code>,
-                  <code>model</code> sin pisar archivos locales
-                </li>
-              </ul>
-            </div>
-            <div class="phase phase-done">
-              <span class="phase-status"><i class="fas fa-check-circle"></i> Paso 2</span>
-              <h3>Copiar recursos compartidos</h3>
-              <ul>
-                <li><code>application-gobtur-*.properties</code></li>
-                <li><code>gobtur-bff-routes.yaml</code></li>
-                <li>Merge de <code>AutoConfiguration.imports</code></li>
-              </ul>
-            </div>
-            <div class="phase phase-done">
-              <span class="phase-status"><i class="fas fa-check-circle"></i> Paso 3</span>
-              <h3>Reescribir pom.xml</h3>
-              <pre class="code-block"><code>&lt;parent&gt;
-  spring-boot-starter-parent 3.5.6
-&lt;/parent&gt;
-&lt;groupId&gt;ar.gob.gcba.his&lt;/groupId&gt;
-&lt;java.version&gt;21&lt;/java.version&gt;
-// Sin dependencia gobtur-common</code></pre>
-            </div>
-            <div class="phase phase-done">
-              <span class="phase-status"><i class="fas fa-check-circle"></i> Paso 4</span>
-              <h3>Compilar de forma aislada</h3>
-              <pre class="code-block"><code>mvn -f gdea-back/{servicio}/pom.xml clean package
-# Requiere JDK 21 (JAVA_HOME)</code></pre>
-            </div>
-            <div class="phase phase-done">
-              <span class="phase-status"><i class="fas fa-flag-checkered"></i> Paso 5</span>
-              <h3>Eliminar reactor y common</h3>
-              <p>
-                Tras migrar los 9 servicios, se eliminaron
-                <code>gdea-back/pom.xml</code> y <code>gobtur-common</code>. Cada
-                servicio compila de forma totalmente independiente.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="case-block">
-          <h2><i class="fas fa-cogs"></i> Casos especiales</h2>
-          <div class="flow-grid">
-            <div class="flow-card">
-              <h3>gestor-bff-service</h3>
-              <p>
-                Dependencias que antes venían del <code>dependencyManagement</code> del
-                parent, ahora explícitas:
-              </p>
-              <pre class="code-block"><code>resilience4j-ratelimiter 2.2.0
-spring-boot-starter-data-jpa</code></pre>
-              <p>Auto-config: <code>GobturBffAutoConfiguration</code></p>
-            </div>
-            <div class="flow-card">
-              <h3>licencia-service (puerto 8088)</h3>
-              <p>Dueño exclusivo del circuito de licencias tras el aislamiento:</p>
-              <ul>
-                <li>REST: <code>/licencia/**</code>, <code>/turnocancelacionlote/**</code></li>
-                <li>Motor agenda delegado vía HTTP a <code>agenda-service</code> (:8083)</li>
-                <li>BFF enruta vía <code>LicenciaMsClient</code></li>
-              </ul>
-              <pre class="code-block"><code>gobtur.remote.agenda-base-url=
-  http://127.0.0.1:8083/wssGestorDeEncuentros/api</code></pre>
-            </div>
-          </div>
-        </section>
-
-        <section class="case-block">
-          <h2><i class="fas fa-plug"></i> Auto-configuración embebida</h2>
-          <p>
-            Al embeber el código de <code>gobtur-common</code>, se activan
-            automáticamente:
-          </p>
-          <div class="skill-tags">
-            <span>GobturHttpClientAutoConfiguration</span>
-            <span>GobturExternalBridgeAutoConfiguration</span>
-            <span>GobturBffAutoConfiguration</span>
-            <span>GobturWebAutoConfiguration</span>
-          </div>
-        </section>
-
-        <section class="case-block">
-          <h2><i class="fas fa-vial"></i> Prueba de humo (licencia-service)</h2>
+          <h3 class="subsection-title">Procedimiento por servicio</h3>
           <ol class="testing-steps">
-            <li>Levantar <code>agenda-service</code> (8083) y <code>licencia-service</code> (8088)</li>
-            <li>Misma BD Oracle y <code>gobtur.internal.api-key</code> compartida</li>
-            <li>Health: <code>GET .../actuator/health</code></li>
-            <li>Con JWT válido: <code>GET .../licencia/findHoy</code></li>
+            <li>Copiar fuentes Java de <code>gobtur-common</code> al servicio</li>
+            <li>Copiar recursos (<code>application-gobtur-*.properties</code>, rutas BFF)</li>
+            <li>Reescribir <code>pom.xml</code>: parent <code>spring-boot-starter-parent 3.5.6</code>, Java 21</li>
+            <li>Compilar de forma aislada: <code>mvn -f {servicio}/pom.xml clean package</code></li>
+            <li>Eliminar reactor y módulo common tras migrar los 9 servicios</li>
           </ol>
         </section>
 
+        <!-- RIS futuro -->
         <section class="case-block">
-          <h2><i class="fas fa-rocket"></i> Próximo paso — DevOps</h2>
+          <h2><i class="fas fa-project-diagram"></i> Visión RIS (programa futuro)</h2>
           <p>
-            Cada carpeta bajo <code>gdea-back/</code> es un proyecto Maven independiente,
-            listo para copiarse a su propio repositorio (incl. <code>pom.xml</code>,
-            <code>src/</code>, Dockerfile/CI). No es necesario mover carpetas dentro de
-            GDEA hasta que exista el repo dedicado.
+            Decisión mayo 2026: cerrar primero las Fases 0–7 del Gestor. La integración de
+            <strong>RIS back</strong> al mismo ecosistema GobTur es el programa siguiente — no
+            bloquea la Fase 2 ni 3 actual.
           </p>
+          <div class="flow-code">
+            Fases 0–7 Gestor → Inventario RIS back → Migrar módulo a MS dueño → RIS front → MS → Retirar RIS back
+          </div>
         </section>
 
-        <section class="case-block case-cta">
+        <!-- Valor de negocio -->
+        <section class="case-block">
+          <h2><i class="fas fa-chart-line"></i> Valor de negocio</h2>
+          <div class="challenge-grid">
+            <div class="challenge-item">
+              <h3>Menos duplicación</h3>
+              <p>Fin de arreglar la misma regla en Gestor y RIS.</p>
+            </div>
+            <div class="challenge-item">
+              <h3>Despliegues seguros</h3>
+              <p>Actualizar solo agenda o solo externos, sin redeploy total.</p>
+            </div>
+            <div class="challenge-item">
+              <h3>Seguridad</h3>
+              <p>Credenciales MF/Sigehos/HIS concentradas en un solo servicio.</p>
+            </div>
+            <div class="challenge-item">
+              <h3>Evolución incremental</h3>
+              <p>Olas de deploy, flags y hub de migración para steering.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block case-cta glass-card">
           <p class="case-note">
             <i class="fas fa-lock"></i>
-            Proyecto institucional GCBA — código privado. Detalle ampliado disponible
-            en entrevista técnica.
+            Proyecto institucional GCBA — documentación interna: MIGRACION-PASO-A-PASO.md,
+            DESPLIEGUE-INFRA.md, FASE-2-EXTERNAL-SERVICES.md
           </p>
           <div class="contact-links">
-            <a href="mailto:stvpablo@gmail.com" class="btn btn-primary"
+            <a href="mailto:pablo.murgia23@gmail.com" class="btn btn-primary"
               ><i class="fas fa-envelope"></i> Contactar</a
             >
-            <a
-              href="https://www.linkedin.com/in/stvteclas"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-outline"
+            <a href="https://www.linkedin.com/in/stvteclas" target="_blank" rel="noopener noreferrer" class="btn btn-glass"
               ><i class="fab fa-linkedin-in"></i> LinkedIn</a
             >
           </div>
