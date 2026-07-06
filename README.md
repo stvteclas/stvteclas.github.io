@@ -7,14 +7,14 @@ Portafolio de **Pablo Murgia**, Java Backend Developer semi-senior y Líder Téc
 
 ## Perfil
 
-Desarrollador Java Backend con más de 3 años de experiencia en sectores **salud** y **financiero**. Líder técnico en DGSISAN. Actualmente en Fligoo (Bancor — app mobile Web Empresas).
+Desarrollador Java Backend con más de 3 años de experiencia en sectores **salud** y **financiero**. Líder técnico en DGSISAN. Experiencia en Fligoo (Bancor — app mobile Web Empresas).
 
 ## Experiencia
 
 | Empresa | Rol | Duración |
 |---|---|---|
-| Fligoo / Bancor | Backend Developer Java (Web Empresas mobile) | ~6 meses · En curso |
-| DGSISAN | Líder Técnico / Java Backend | 3+ años · En curso |
+| Fligoo / Bancor | Backend Developer Java (Web Empresas mobile) | ~6 meses |
+| DGSISAN | Líder Técnico / Java Backend | 3+ años |
 | Blink / Visual-Limes | Backend Developer Java (FARHOS) | ~8 meses |
 | BAUFEST / BBVA | Backend Developer Java | ~2 años |
 
