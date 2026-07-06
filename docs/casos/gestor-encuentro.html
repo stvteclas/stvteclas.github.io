@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Caso de estudio: Migración del Gestor de Encuentros (GDE) en SIGEHOS."
+      content="Migración de 9 microservicios GDE a standalone: desacople de gobtur-platform y gobtur-common, Spring Boot 3.5.6, Java 21."
     />
-    <title>Migración Gestor de Encuentros | Pablo Murgia</title>
+    <title>Migración GDE — Microservicios Standalone | Pablo Murgia</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
       rel="stylesheet"
@@ -34,69 +34,280 @@
         <a href="../index.html#migrations-section" class="case-back"
           ><i class="fas fa-arrow-left"></i> Volver a migraciones</a
         >
-        <span class="migration-type">Migración · SIGEHOS / DGSISAN</span>
-        <h1>Migración del Gestor de Encuentros (GDE)</h1>
+        <span class="migration-type">Migración completada · Jun 2026</span>
+        <h1>Gestor de Encuentros — Microservicios Standalone</h1>
         <p class="case-lead">
-          Evolución del módulo de gestión de encuentros y turnos hacia la arquitectura
-          interoperable de la Historia Integral de Salud, habilitando continuidad
-          asistencial en efectores públicos de la Ciudad de Buenos Aires.
+          Desacople de <strong>9 microservicios</strong> del reactor
+          <code>gobtur-platform</code> y la dependencia compartida
+          <code>gobtur-common</code>, siguiendo el patrón de
+          <code>laboratorio-service</code>: parent directo
+          <code>spring-boot-starter-parent</code> y código común embebido en cada
+          servicio.
         </p>
+        <div class="hero-badges">
+          <span class="badge">Spring Boot 3.5.6</span>
+          <span class="badge">Java 21</span>
+          <span class="badge">9 microservicios</span>
+          <span class="badge">Maven standalone</span>
+          <span class="badge">Resilience4j</span>
+        </div>
       </header>
 
       <div class="container case-content">
         <section class="case-block">
-          <h2><i class="fas fa-bullseye"></i> Contexto</h2>
+          <h2><i class="fas fa-bullseye"></i> Visión general</h2>
           <p>
-            El Gestor de Encuentros (GDE) fue creado como módulo dentro de SIGEHOS para
-            administrar turnos, demanda espontánea y encuentros clínicos. Su migración
-            responde a la necesidad de interoperar con la Red Nacional de Salud Digital
-            y estandarizar flujos de información entre jurisdicciones.
+            La plataforma <strong>gdea-back</strong> evolucionó de un monorepo Maven
+            multi-módulo hacia <strong>9 proyectos Maven independientes</strong>, cada
+            uno listo para moverse a su propio repositorio. El reactor padre
+            (<code>gdea-back/pom.xml</code>) y el módulo
+            <code>gobtur-common</code> fueron eliminados tras completar la migración.
           </p>
-        </section>
-
-        <section class="case-block">
-          <h2><i class="fas fa-exclamation-triangle"></i> Desafíos</h2>
-          <div class="challenge-grid">
-            <div class="challenge-item">
-              <h3>Alta concurrencia</h3>
-              <p>Gestión de turnos en múltiples efectores con picos de demanda en horarios pico.</p>
+          <div class="results-grid">
+            <div class="result-item">
+              <span class="result-number">9</span>
+              <span class="result-label">Microservicios standalone</span>
             </div>
-            <div class="challenge-item">
-              <h3>Reglas de negocio complejas</h3>
-              <p>Modalidades distintas: programada, espontánea, sobreturnos y derivaciones.</p>
+            <div class="result-item">
+              <span class="result-number">0</span>
+              <span class="result-label">Dependencias de reactor padre</span>
             </div>
-            <div class="challenge-item">
-              <h3>Interoperabilidad</h3>
-              <p>Integración con módulos clínicos, laboratorio y bus de mensajería.</p>
-            </div>
-            <div class="challenge-item">
-              <h3>Contingencias operativas</h3>
-              <p>Planes de contingencia para GDE ambulatorio y laboratorio ante fallas.</p>
+            <div class="result-item">
+              <span class="result-number">100%</span>
+              <span class="result-label">Compilación aislada por servicio</span>
             </div>
           </div>
         </section>
 
         <section class="case-block">
-          <h2><i class="fas fa-code"></i> Stack y alcance</h2>
+          <h2><i class="fas fa-table"></i> Estado de servicios</h2>
+          <div class="table-wrap">
+            <table class="services-table">
+              <thead>
+                <tr>
+                  <th>Servicio</th>
+                  <th>Standalone</th>
+                  <th>Notas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>dominio-service</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>Primera plantilla de referencia</td>
+                </tr>
+                <tr>
+                  <td><code>login-service</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><code>external-services</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><code>agenda-service</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><code>hub-service</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>Requiere <code>spring-boot-starter-data-jpa</code></td>
+                </tr>
+                <tr>
+                  <td><code>notificacion-service</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><code>reportes-services</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td><code>licencia-service</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>Aislamiento del dominio licencias (puerto 8088)</td>
+                </tr>
+                <tr>
+                  <td><code>gestor-bff-service</code></td>
+                  <td><span class="status-ok"><i class="fas fa-check"></i> Sí</span></td>
+                  <td>Resilience4j rate-limiter + JPA explícitos</td>
+                </tr>
+                <tr class="row-removed">
+                  <td><code>gobtur-common</code></td>
+                  <td><span class="status-removed"><i class="fas fa-times"></i> Eliminado</span></td>
+                  <td>Código embebido en cada servicio</td>
+                </tr>
+                <tr class="row-removed">
+                  <td><code>gobtur-platform</code></td>
+                  <td><span class="status-removed"><i class="fas fa-times"></i> Eliminado</span></td>
+                  <td>Reactor <code>gdea-back/pom.xml</code> ya no existe</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-sitemap"></i> Arquitectura resultante</h2>
+          <div class="architecture-diagram arch-three-col arch-services">
+            <div class="arch-box arch-legacy">
+              <h3>Antes</h3>
+              <span class="arch-tech">Monorepo Maven</span>
+              <ul>
+                <li>gobtur-platform (reactor)</li>
+                <li>gobtur-common (shared)</li>
+                <li>9 MS acoplados al parent</li>
+              </ul>
+            </div>
+            <div class="arch-connector"><i class="fas fa-arrow-right"></i></div>
+            <div class="arch-box arch-highlight">
+              <h3>Después</h3>
+              <span class="arch-tech">9 proyectos independientes</span>
+              <ul>
+                <li>spring-boot-starter-parent 3.5.6</li>
+                <li>Java 21 por servicio</li>
+                <li>Common embebido localmente</li>
+                <li>Listo para repo dedicado</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-tasks"></i> Procedimiento por servicio</h2>
+          <div class="phases-timeline">
+            <div class="phase phase-done">
+              <span class="phase-status"><i class="fas fa-check-circle"></i> Paso 1</span>
+              <h3>Copiar fuentes de gobtur-common</h3>
+              <ul>
+                <li>
+                  <code>ar/gob/gcba/his/gobtur/common/**</code> → misma ruta en el
+                  servicio
+                </li>
+                <li>
+                  Subpaquetes <code>comun</code>, <code>exception</code>,
+                  <code>model</code> sin pisar archivos locales
+                </li>
+              </ul>
+            </div>
+            <div class="phase phase-done">
+              <span class="phase-status"><i class="fas fa-check-circle"></i> Paso 2</span>
+              <h3>Copiar recursos compartidos</h3>
+              <ul>
+                <li><code>application-gobtur-*.properties</code></li>
+                <li><code>gobtur-bff-routes.yaml</code></li>
+                <li>Merge de <code>AutoConfiguration.imports</code></li>
+              </ul>
+            </div>
+            <div class="phase phase-done">
+              <span class="phase-status"><i class="fas fa-check-circle"></i> Paso 3</span>
+              <h3>Reescribir pom.xml</h3>
+              <pre class="code-block"><code>&lt;parent&gt;
+  spring-boot-starter-parent 3.5.6
+&lt;/parent&gt;
+&lt;groupId&gt;ar.gob.gcba.his&lt;/groupId&gt;
+&lt;java.version&gt;21&lt;/java.version&gt;
+// Sin dependencia gobtur-common</code></pre>
+            </div>
+            <div class="phase phase-done">
+              <span class="phase-status"><i class="fas fa-check-circle"></i> Paso 4</span>
+              <h3>Compilar de forma aislada</h3>
+              <pre class="code-block"><code>mvn -f gdea-back/{servicio}/pom.xml clean package
+# Requiere JDK 21 (JAVA_HOME)</code></pre>
+            </div>
+            <div class="phase phase-done">
+              <span class="phase-status"><i class="fas fa-flag-checkered"></i> Paso 5</span>
+              <h3>Eliminar reactor y common</h3>
+              <p>
+                Tras migrar los 9 servicios, se eliminaron
+                <code>gdea-back/pom.xml</code> y <code>gobtur-common</code>. Cada
+                servicio compila de forma totalmente independiente.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-cogs"></i> Casos especiales</h2>
+          <div class="flow-grid">
+            <div class="flow-card">
+              <h3>gestor-bff-service</h3>
+              <p>
+                Dependencias que antes venían del <code>dependencyManagement</code> del
+                parent, ahora explícitas:
+              </p>
+              <pre class="code-block"><code>resilience4j-ratelimiter 2.2.0
+spring-boot-starter-data-jpa</code></pre>
+              <p>Auto-config: <code>GobturBffAutoConfiguration</code></p>
+            </div>
+            <div class="flow-card">
+              <h3>licencia-service (puerto 8088)</h3>
+              <p>Dueño exclusivo del circuito de licencias tras el aislamiento:</p>
+              <ul>
+                <li>REST: <code>/licencia/**</code>, <code>/turnocancelacionlote/**</code></li>
+                <li>Motor agenda delegado vía HTTP a <code>agenda-service</code> (:8083)</li>
+                <li>BFF enruta vía <code>LicenciaMsClient</code></li>
+              </ul>
+              <pre class="code-block"><code>gobtur.remote.agenda-base-url=
+  http://127.0.0.1:8083/wssGestorDeEncuentros/api</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-plug"></i> Auto-configuración embebida</h2>
+          <p>
+            Al embeber el código de <code>gobtur-common</code>, se activan
+            automáticamente:
+          </p>
           <div class="skill-tags">
-            <span>Java</span>
-            <span>Spring Boot</span>
-            <span>SIGEHOS</span>
-            <span>HL7 FHIR</span>
-            <span>REST APIs</span>
-            <span>PostgreSQL</span>
+            <span>GobturHttpClientAutoConfiguration</span>
+            <span>GobturExternalBridgeAutoConfiguration</span>
+            <span>GobturBffAutoConfiguration</span>
+            <span>GobturWebAutoConfiguration</span>
           </div>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-vial"></i> Prueba de humo (licencia-service)</h2>
+          <ol class="testing-steps">
+            <li>Levantar <code>agenda-service</code> (8083) y <code>licencia-service</code> (8088)</li>
+            <li>Misma BD Oracle y <code>gobtur.internal.api-key</code> compartida</li>
+            <li>Health: <code>GET .../actuator/health</code></li>
+            <li>Con JWT válido: <code>GET .../licencia/findHoy</code></li>
+          </ol>
+        </section>
+
+        <section class="case-block">
+          <h2><i class="fas fa-rocket"></i> Próximo paso — DevOps</h2>
+          <p>
+            Cada carpeta bajo <code>gdea-back/</code> es un proyecto Maven independiente,
+            listo para copiarse a su propio repositorio (incl. <code>pom.xml</code>,
+            <code>src/</code>, Dockerfile/CI). No es necesario mover carpetas dentro de
+            GDEA hasta que exista el repo dedicado.
+          </p>
         </section>
 
         <section class="case-block case-cta">
           <p class="case-note">
             <i class="fas fa-lock"></i>
-            Detalle técnico disponible en entrevista. Documentación en
-            <code>docs/casos/gestor-encuentro/</code>.
+            Proyecto institucional GCBA — código privado. Detalle ampliado disponible
+            en entrevista técnica.
           </p>
           <div class="contact-links">
             <a href="mailto:stvpablo@gmail.com" class="btn btn-primary"
               ><i class="fas fa-envelope"></i> Contactar</a
+            >
+            <a
+              href="https://www.linkedin.com/in/stvteclas"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-outline"
+              ><i class="fab fa-linkedin-in"></i> LinkedIn</a
             >
           </div>
         </section>
