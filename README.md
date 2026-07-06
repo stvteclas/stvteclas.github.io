@@ -9,7 +9,7 @@ Portafolio profesional de **Pablo Murgia**, Backend Developer especializado en J
 Migraciones en el ecosistema **SIGEHOS** (DGSISAN, GCBA):
 
 - **Laboratorio** — Estrategia híbrida: Angular 17 + Spring Boot 3 + Java 21
-- **Gestor de Encuentros** — 9 microservicios standalone (Spring Boot 3.5.6, Java 21); reactor gobtur-platform eliminado
+- **Gestor de Encuentros** — GobTur Platform (Etapa 1: monolito → 7 MS, ~32%) + Etapa 2: 9 MS standalone
 - **Bus de Interoperabilidad** — Integración HL7 FHIR
 
 ## Stack
