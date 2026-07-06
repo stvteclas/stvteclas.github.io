@@ -187,23 +187,25 @@
             <article class="migration-card">
               <div class="migration-card-header">
                 <span class="migration-icon"><i class="fas fa-calendar-check"></i></span>
-                <span class="migration-type">Migración · Producción</span>
+                <span class="migration-type">Completada · Jun 2026</span>
               </div>
-              <h3>Gestor de Encuentros (GDE)</h3>
+              <h3>Gestor de Encuentros — 9 MS Standalone</h3>
               <p>
-                Migración del módulo de gestión de encuentros y turnos hacia la nueva
-                arquitectura interoperable, habilitando continuidad asistencial y
-                flujos ambulatorios integrados con la Historia Integral de Salud.
+                Desacople de 9 microservicios del reactor gobtur-platform y
+                gobtur-common. Cada servicio con Spring Boot 3.5.6 + Java 21,
+                compilación Maven independiente y listo para repo dedicado.
               </p>
               <ul class="migration-highlights">
-                <li>Gestión de turnos y demanda espontánea</li>
-                <li>Integración con módulos clínicos</li>
-                <li>Planes de contingencia operativa</li>
+                <li>9 microservicios migrados (dominio, agenda, BFF, licencia…)</li>
+                <li>Reactor y gobtur-common eliminados</li>
+                <li>Aislamiento del dominio licencias</li>
+                <li>Patrón laboratorio-service replicado</li>
               </ul>
               <div class="migration-stack">
-                <span>Java</span>
-                <span>SIGEHOS</span>
-                <span>FHIR</span>
+                <span>Spring Boot 3.5.6</span>
+                <span>Java 21</span>
+                <span>Maven</span>
+                <span>Resilience4j</span>
               </div>
               <a href="casos/gestor-encuentro.html" class="btn btn-card"
                 >Ver caso de estudio <i class="fas fa-arrow-right"></i
