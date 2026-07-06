@@ -7,15 +7,16 @@ Portafolio de **Pablo Murgia**, Java Backend Developer semi-senior y Líder Téc
 
 ## Perfil
 
-Desarrollador Java Backend con más de 3 años de experiencia en sectores **salud** y **financiero**. Líder técnico en DGSISAN (migraciones legacy → Spring Boot). Consultor en Blink/Visual-Limes y ex-BAUFEST/BBVA.
+Desarrollador Java Backend con más de 3 años de experiencia en sectores **salud** y **financiero**. Líder técnico en DGSISAN. Actualmente en Fligoo (Bancor — app mobile Web Empresas).
 
 ## Experiencia
 
-| Empresa | Rol | Período |
+| Empresa | Rol | Duración |
 |---|---|---|
-| Blink / Visual-Limes | Backend Developer Java (FARHOS) | Sep 2025 — Actualidad |
-| DGSISAN | Líder Técnico / Java Backend | Ene 2023 — Actualidad |
-| BAUFEST / BBVA | Backend Developer Java | Jul 2023 — Ago 2025 |
+| Fligoo / Bancor | Backend Developer Java (Web Empresas mobile) | ~6 meses · En curso |
+| DGSISAN | Líder Técnico / Java Backend | 3+ años · En curso |
+| Blink / Visual-Limes | Backend Developer Java (FARHOS) | ~8 meses |
+| BAUFEST / BBVA | Backend Developer Java | ~2 años |
 
 ## Migraciones destacadas (DGSISAN)
 
