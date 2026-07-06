@@ -203,15 +203,16 @@
             <article class="migration-card glass-card">
               <div class="migration-card-header">
                 <span class="migration-icon icon-violet"><i class="fas fa-calendar-check"></i></span>
-                <span class="migration-type tag-violet">Completada · Jun 2026</span>
+                <span class="migration-type tag-violet">GobTur Platform · 2 etapas</span>
               </div>
-              <h3>Gestor de Encuentros — 9 MS Standalone</h3>
+              <h3>Gestor de Encuentros + RIS</h3>
               <p>
-                Desacople de 9 microservicios del reactor gobtur-platform.
-                Spring Boot 3.5.6, Java 21, Maven independiente.
+                <strong>Etapa 1:</strong> monolito → 7 microservicios (~32%, Fase 2).
+                <strong>Etapa 2:</strong> 9 MS standalone Maven (Jun 2026).
+                Integraciones centralizadas en external-services :8082.
               </p>
               <div class="migration-stack">
-                <span>Maven</span><span>Resilience4j</span><span>BFF</span>
+                <span>7 fases</span><span>8081–8088</span><span>Oracle</span><span>Java 21</span>
               </div>
               <a href="casos/gestor-encuentro.html" class="btn btn-card"
                 >Ver caso <i class="fas fa-arrow-right"></i
